@@ -17,9 +17,10 @@ LDFLAGS	= @LDFLAGS@
 NROFF   = @NROFF@
 INSTALL	= @INSTALL@
 
-prefix	= @prefix@
-bindir  = $(prefix)@bindir@
-mandir  = $(prefix)@mandir@
+prefix		= @prefix@
+exec_prefix	= @exec_prefix@
+bindir		= @bindir@
+mandir		= @mandir@
 
 man1dir	= $(mandir)/man1
 
@@ -39,4 +40,7 @@ install:
 
 clean:
 	rm -f ranpwd *.o *~ \#* core
+
+distclean: clean
+	rm -f config.* Makefile
 
