@@ -50,13 +50,19 @@ Generate octal numbers.
 Generate a bit string (for Bynar sabotage teams.)
 .TP
 .I "\-s"
-On Linux, use
+On systems which have
+.I /dev/random
+support, use
 .I /dev/random
 to generate passwords rather than
 .IR /dev/urandom .
 This is more secure, but may be slower, as the process will block
 rather than degrade to a PRNG if true random numbers are temporarily
-unavailable.
+unavailable.  Using
+.I "\-s"
+on a system without
+.I /dev/random
+support results in an error message.
 .TP
 .I "\-c"
 For octal numbers, preceed with
