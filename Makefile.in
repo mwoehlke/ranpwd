@@ -1,0 +1,42 @@
+#ident "$Id$"
+## -----------------------------------------------------------------------
+##   
+##   Copyright 1995-2001 H. Peter Anvin - All Rights Reserved
+##
+##   This program is free software; you can redistribute it and/or modify
+##   it under the terms of the GNU General Public License as published by
+##   the Free Software Foundation, Inc., 675 Mass Ave, Cambridge MA 02139,
+##   USA; either version 2 of the License, or (at your option) any later
+##   version; incorporated herein by reference.
+##
+## -----------------------------------------------------------------------
+
+CC	= @CC@
+CFLAGS	= @CFLAGS@
+LDFLAGS	= @LDFLAGS@
+NROFF   = @NROFF@
+INSTALL	= @INSTALL@
+
+prefix	= @prefix@
+bindir  = $(prefix)@bindir@
+mandir  = $(prefix)@mandir@
+
+man1dir	= $(mandir)/man1
+
+all:	ranpwd
+
+.PREFIXES: .c .o
+
+.c.o:
+	$(CC) $(CFLAGS) -c $<
+
+ranpwd: ranpwd.o
+	$(CC) $(LDFLAGS) -o $@ $<
+
+install:
+	$(INSTALL) -m 755 ranpwd   $(INSTALLROOT)$(bindir)
+	$(INSTALL) -m 644 ranpwd.1 $(INSTALLROOT)$(man1dir)
+
+clean:
+	rm -f ranpwd *.o *~ \#* core
+

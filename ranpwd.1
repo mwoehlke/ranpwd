@@ -1,0 +1,74 @@
+.TH RANPWD 1L "Nifty utility" "Linux" \" -*- nroff -*-
+.SH NAME
+ranpwd \- generate random passwords
+.SH SYNOPSIS
+.B ranpwd
+[\-aluALUxXdobsc] [length]
+.SH DESCRIPTION
+.B ranpwd
+generates random passwords.  On Linux, it will use the kernel-based
+true random number generator to generate cryptographically secure
+passwords.
+.PP
+If
+.I length
+is not given, it defaults to 8 characters.  If no options are given,
+passwords can contain any printable ASCII character except space.
+.SS OPTIONS
+.TP
+.I "\-a"
+Generate mixed-case alphanumeric passwords.
+.TP
+.I "\-l"
+Generate lower-case alphanumeric passwords.
+.TP
+.I "\-u"
+Generate upper-case alphanumberic passwords.
+.TP
+.I "\-A"
+Generate mixed-case alphabetic passwords.
+.TP
+.I "\-L"
+Generate lower-case alphabetic passwords.
+.TP
+.I "\-U"
+Generate upper-case alphabetic passwords.
+.TP
+.I "\-x"
+Generate lower-case hexadecimal numbers.
+.TP
+.I "\-X"
+Generate upper-case hexadecimal numbers.
+.TP
+.I "\-d"
+Generate decimal numbers.
+.TP
+.I "\-o"
+Generate octal numbers.
+.TP
+.I "\-b"
+Generate a bit string (for Bynar sabotage teams.)
+.TP
+.I "\-s"
+On Linux, use
+.I /dev/random
+to generate passwords rather than
+.IR /dev/urandom .
+This is more secure, but may be slower, as the process will block
+rather than degrade to a PRNG if true random numbers are temporarily
+unavailable.
+.TP
+.I "\-c"
+For octal numbers, preceed with
+.I 0;
+for hexadecimal numbers, preceed with
+.I 0x;
+for decimal numbers, strip leading zeros; for all others, enclose in
+double quotes and \\-escape quotes and backslashes if present in the
+output.  This will ensure that the output is always a valid C language
+constant.  The
+.I length
+parameter on the command line is always number of significant digits,
+not the length of the output.
+.SS AUTHOR
+H. Peter Anvin <hpa@zytor.com>
