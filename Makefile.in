@@ -1,7 +1,7 @@
 #ident "$Id$"
 ## -----------------------------------------------------------------------
 ##   
-##   Copyright 1995-2001 H. Peter Anvin - All Rights Reserved
+##   Copyright 1995-2003 H. Peter Anvin - All Rights Reserved
 ##
 ##   This program is free software; you can redistribute it and/or modify
 ##   it under the terms of the GNU General Public License as published by
@@ -37,6 +37,7 @@ ranpwd: ranpwd.o
 	$(CC) $(LDFLAGS) -o $@ $<
 
 install:
+	mkdir -m 755 -p $(INSTALLROOT)$(bindir) $(INSTALLROOT)$(man1dir)
 	$(INSTALL) -m 755 ranpwd   $(INSTALLROOT)$(bindir)
 	$(INSTALL) -m 644 ranpwd.1 $(INSTALLROOT)$(man1dir)
 

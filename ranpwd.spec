@@ -15,7 +15,7 @@ cryptographically secure random number generator.
 %setup -q
 
 %build
-%config
+%configure
 make
 
 %install
