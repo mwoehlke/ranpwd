@@ -17,6 +17,8 @@ LDFLAGS	= @LDFLAGS@
 NROFF   = @NROFF@
 INSTALL	= @INSTALL@
 
+SOURCES = ranpwd.c ranpwd.1 configure.in configure Makefile.in ranpwd.spec
+
 prefix		= @prefix@
 exec_prefix	= @exec_prefix@
 bindir		= @bindir@
@@ -43,4 +45,3 @@ clean:
 
 distclean: clean
 	rm -f config.* Makefile
-
