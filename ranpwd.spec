@@ -1,6 +1,6 @@
 Summary: A program to generate random passwords
 Name: ranpwd
-Version: 1.0
+Version: 1.1
 Release: 1
 License: GPL
 Group: Applications/System
