@@ -1,10 +1,20 @@
-.\" $Id$
-.TH RANPWD 1 "17 Mar 2003" "H. Peter Anvin"
+.\" -----------------------------------------------------------------------
+.\"   
+.\"   Copyright 1994-2008 H. Peter Anvin - All Rights Reserved
+.\"
+.\"   This program is free software; you can redistribute it and/or modify
+.\"   it under the terms of the GNU General Public License as published by
+.\"   the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor,
+.\"   Boston MA 02110-1301, USA; either version 2 of the License, or
+.\"   (at your option) any later version; incorporated herein by reference.
+.\"
+.\" -----------------------------------------------------------------------
+.TH RANPWD 1 "19 January 2008" "H. Peter Anvin"
 .SH NAME
 ranpwd \- generate random passwords
 .SH SYNOPSIS
 .B ranpwd
-[\-aluALUxXdobsc] [length]
+[options] [length]
 .SH DESCRIPTION
 .B ranpwd
 generates random passwords.  On Linux, it will use the kernel-based
@@ -13,44 +23,59 @@ passwords.
 .PP
 If
 .I length
-is not given, it defaults to 8 characters.  If no options are given,
-passwords can contain any printable ASCII character except space.
+is not given, it defaults to 8 characters unless specified below.
 .SS OPTIONS
 .TP
-.I "\-a"
+.I "\-\-ascii"
+Allow any printable ASCII character except space.  This is the default.
+.TP
+.I "\-a", "\-\-alphanum"
 Generate mixed-case alphanumeric passwords.
 .TP
-.I "\-l"
+.I "\-l", "\-\-alphanum \-\-lower"
 Generate lower-case alphanumeric passwords.
 .TP
-.I "\-u"
+.I "\-u", "\-\-alphanum \-\-upper"
 Generate upper-case alphanumberic passwords.
 .TP
-.I "\-A"
+.I "\-A", "\-\-alpha"
 Generate mixed-case alphabetic passwords.
 .TP
-.I "\-L"
+.I "\-L", "\-\-alpha \-\-lower"
 Generate lower-case alphabetic passwords.
 .TP
-.I "\-U"
+.I "\-U", "\-\-alpha \-\-upper"
 Generate upper-case alphabetic passwords.
 .TP
-.I "\-x"
+.I "\-x", "\-\-hexadecimal \-\-lower"
 Generate lower-case hexadecimal numbers.
 .TP
-.I "\-X"
+.I "\-X", "\-\-hexadecimal \-\-upper"
 Generate upper-case hexadecimal numbers.
 .TP
-.I "\-d"
+.I "\-d", "\-\-decimal"
 Generate decimal numbers.
 .TP
-.I "\-o"
+.I "\-o", "\-\-octal"
 Generate octal numbers.
 .TP
-.I "\-b"
+.I "\-b", "\-\-binary"
 Generate a bit string (for Bynar sabotage teams.)
+.IP
+.I "\-i", "\-\-ip"
+Generate a random IP suffix (normally used with a
+.I 169.254.
+prefix).  The first octet cannot be 0 or 255.  The default is two octets.
+.IP
+.I "\-m", "\-\-mac-address"
+Generate a random MAC address.  The first octet must have the
+multicast bit clear, and the local bit set.  The default is six
+octets.
+.IP
+.I "\-M", "\-\-mac-address \-\-upper"
+Generate an upper case MAC address.
 .TP
-.I "\-s"
+.I "\-s", "\-\-secure"
 On systems which have
 .I /dev/random
 support, use
@@ -65,7 +90,7 @@ on a system without
 .I /dev/random
 support results in an error message.
 .TP
-.I "\-c"
+.I "\-c", "\-\-c"
 For octal numbers, preceed with
 .I 0;
 for hexadecimal numbers, preceed with

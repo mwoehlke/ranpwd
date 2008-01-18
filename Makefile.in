@@ -1,13 +1,12 @@
-#ident "$Id$"
 ## -----------------------------------------------------------------------
 ##   
-##   Copyright 1995-2003 H. Peter Anvin - All Rights Reserved
+##   Copyright 1995-2008 H. Peter Anvin - All Rights Reserved
 ##
 ##   This program is free software; you can redistribute it and/or modify
 ##   it under the terms of the GNU General Public License as published by
-##   the Free Software Foundation, Inc., 675 Mass Ave, Cambridge MA 02139,
-##   USA; either version 2 of the License, or (at your option) any later
-##   version; incorporated herein by reference.
+##   the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor,
+##   Boston MA 02110-1301, USA; either version 2 of the License, or
+##   (at your option) any later version; incorporated herein by reference.
 ##
 ## -----------------------------------------------------------------------
 
@@ -23,6 +22,7 @@ prefix		= @prefix@
 exec_prefix	= @exec_prefix@
 bindir		= @bindir@
 mandir		= @mandir@
+datarootdir	= @datarootdir@	# Shut up autoconf
 
 man1dir	= $(mandir)/man1
 
@@ -45,4 +45,4 @@ clean:
 	rm -f ranpwd *.o *~ \#* core
 
 distclean: clean
-	rm -f config.* Makefile
+	rm -rf config.log config.status autom4te.cache Makefile

@@ -1,6 +1,6 @@
 Summary: A program to generate random passwords
 Name: ranpwd
-Version: 1.1
+Version: 1.2
 Release: 1
 License: GPL
 Group: Applications/System
@@ -34,5 +34,8 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Jan 18 2008 H. Peter Anvin <hpa@zytor.com>
+- Update for version 1.2.
+
 * Mon Mar 17 2003 H. Peter Anvin <hpa@zytor.com>
 - Initial build.
