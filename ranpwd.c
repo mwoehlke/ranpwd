@@ -294,7 +294,7 @@ static void output_random(enum output_type type, int nchar, int decor)
       case ty_ip:
 	do {
 	  getrandom(&ch, 1);
-	} while (nchar == ichar && (ch-1) > 254);
+	} while (nchar == ichar && (ch-1U) >= 254);
 	printf("%s%u", (nchar == ichar) ? "" : ".", ch);
 	nchar--;
 	break;
@@ -412,19 +412,20 @@ int main(int argc, char *argv[])
   setrandom();
 
   /* Adjust type for monocasing */
-  switch (type) {
-  case ty_ascii:
-  case ty_anum:
-  case ty_alpha:
-    type += monocase;
-    break;
-  case ty_hex:
-  case ty_mac:
-    type += monocase-1;
-    break;
-  default:
-    break;
-  }
+  if (monocase)
+    switch (type) {
+    case ty_ascii:
+    case ty_anum:
+    case ty_alpha:
+      type += monocase;
+      break;
+    case ty_hex:
+    case ty_mac:
+      type += monocase-1;
+      break;
+    default:
+      break;
+    }
 
   if ( decor ) {
     switch ( type ) {
