@@ -1,0 +1,12 @@
+#*
+.#*
+*~
+*.o
+*.log
+*.status
+config.h.in
+config.h
+configure
+autom4te.cache
+Makefile
+ranpwd
