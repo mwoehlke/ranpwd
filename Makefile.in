@@ -13,7 +13,6 @@
 CC	= @CC@
 CFLAGS	= @CFLAGS@
 LDFLAGS	= @LDFLAGS@
-NROFF   = @NROFF@
 INSTALL	= @INSTALL@
 
 SOURCES = ranpwd.c ranpwd.1 configure.in configure Makefile.in ranpwd.spec
