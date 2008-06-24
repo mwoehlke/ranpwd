@@ -38,7 +38,7 @@ enum extended_options {
   OPT_ASCII,
 };
 
-static const char *short_options = "aluxXdobALUimMschV";
+static const char *short_options = "aluxXdobALUimgGMschV";
 #ifdef HAVE_GETOPT_LONG
 const struct option long_options[] = {
   { "ascii",            0, 0, OPT_ASCII },
@@ -56,6 +56,10 @@ const struct option long_options[] = {
   { "lower",		0, 0, OPT_LOWER },
   { "ip",               0, 0, 'i' },
   { "mac-address",      0, 0, 'm' },
+  { "guid",             0, 0, 'g' },
+  { "uuid",             0, 0, 'g' },
+  { "uc-guid",          0, 0, 'G' },
+  { "uc-uuid",          0, 0, 'G' },
   { "secure",           0, 0, 's' },
   { "c",		0, 0, 'c' },
   { "help",             0, 0, 'h' },
@@ -86,6 +90,8 @@ static void usage(int err)
 	  LO("  --octal              ")"  -o  Octal number\n"
 	  LO("  --binary             ")"  -b  Binary number\n"
 	  LO("  --c                  ")"  -c  C language constant\n"
+	  LO("  --uuid               ")"  -g  UUID/GUID\n"
+	  LO("  --uuid --upper       ")"  -G  Upper case UUID/GUID\n"
 	  LO("  --secure             ")"  -s  Slower but more secure\n"
 	  LO("  --help               ")"  -h  Show this message\n"
 	  LO("  --version            ")"  -v  Display program version\n"
@@ -174,6 +180,7 @@ enum output_type {
   ty_hex, ty_uhex,
   ty_ip,
   ty_mac, ty_umac,
+  ty_uuid, ty_uuuid,
   ty_dec, ty_oct, ty_binary
 };
 
@@ -312,6 +319,28 @@ static void output_random(enum output_type type, int nchar, int decor)
 	printf(type == ty_umac ? "%02X" : "%02x", ch);
 	nchar--;
 	break;
+
+      case ty_uuid:
+      case ty_uuuid:
+	getrandom(&ch, 1);
+	switch (ichar-nchar) {
+	case 4:
+	  putchar('-');
+	  break;
+	case 6:
+	  ch = (ch & 0x0f) | 0x40; /* Version number */
+	  putchar('-');
+	  break;
+	case 8:
+	  ch = (ch & 0x3f) | 0x80; /* By spec */
+	  putchar('-');
+	  break;
+	default:
+	  break;
+	}
+	printf(type == ty_uuuid ? "%02X" : "%02x", ch);
+	nchar--;
+	break;
       }
   }
 }
@@ -379,6 +408,10 @@ int main(int argc, char *argv[])
       type = ty_umac;
       nchar = 6;
       break;
+    case 'g':			/* UUID/GUID */
+      type = ty_uuid;
+      nchar = 16;
+      break;
     case 's':		       /* Use /dev/random, not /dev/urandom */
       secure_source = 1;
       break;
@@ -421,6 +454,7 @@ int main(int argc, char *argv[])
       break;
     case ty_hex:
     case ty_mac:
+    case ty_uuid:
       type += monocase-1;
       break;
     default:
