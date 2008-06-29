@@ -65,21 +65,27 @@ Generate a bit string (for Bynar sabotage teams.)
 .I "\-i", "\-\-ip"
 Generate a random IP suffix (normally used with a
 .I 169.254.
-prefix).  The first octet cannot be 0 or 255.  The default is two octets.
+prefix).  The first octet cannot be 0 or 255.  Length is given in
+octets; the default is two octets.
 .TP
 .I "\-m", "\-\-mac-address"
 Generate a random MAC address.  The first octet must have the
-multicast bit clear, and the local bit set.  The default is six
-octets.
+multicast bit clear, and the local bit set.  Length is given in
+octets; the default is six octets.
 .TP
 .I "\-M", "\-\-mac-address \-\-upper"
-Generate an upper case MAC address.
+Generate an upper case random MAC address.  The first octet must have the
+multicast bit clear, and the local bit set.  Length is given in
+octets; the default is six octets.
 .TP
 .I "\-g", "\-\-uuid", "\-\-guid"
-Generate a random Universally Unique Identifier (UUID).
+Generate a random Universally Unique Identifier (UUID).  Length is
+given in the number of UUIDs to output; the default is one UUID.
 .TP
 .I "\-g", "\-\-uuid \-\-upper", "\-\-guid \-\-upper"
 Generate an upper case random Universally Unique Identifier (UUID).
+Length is given in the number of UUIDs to output; the default is one
+UUID.
 .TP
 .I "\-s", "\-\-secure"
 On systems which have

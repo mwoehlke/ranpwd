@@ -188,6 +188,7 @@ static void output_random(enum output_type type, int nchar, int decor)
 {
   int i;
   unsigned char ch;
+  unsigned char buf[16];
   int ichar = nchar;
 
   while (nchar) {
@@ -322,29 +323,29 @@ static void output_random(enum output_type type, int nchar, int decor)
 
       case ty_uuid:
       case ty_uuuid:
-	getrandom(&ch, 1);
-	switch ((ichar-nchar) & 15) {
-	case 0:
-	  if (ichar != nchar)
-	    putchar(' ');
-	  break;
-	case 4:
-	case 10:
-	  putchar('-');
-	  break;
-	case 6:
-	  ch = (ch & 0x0f) | 0x40; /* Version number */
-	  putchar('-');
-	  break;
-	case 8:
-	  ch = (ch & 0x3f) | 0x80; /* By spec */
-	  putchar('-');
-	  break;
-	default:
-	  break;
+	getrandom(buf, 16);
+	for (i = 0; i < 16; i++) {
+	  ch = buf[i];
+	  switch (i) {
+	  case 4:
+	  case 10:
+	    putchar('-');
+	    break;
+	  case 6:
+	    ch = (ch & 0x0f) | 0x40; /* Version number */
+	    putchar('-');
+	    break;
+	  case 8:
+	    ch = (ch & 0x3f) | 0x80; /* By spec */
+	    putchar('-');
+	    break;
+	  default:
+	    break;
+	  }
+	  printf(type == ty_uuuid ? "%02X" : "%02x", ch);
 	}
-	printf(type == ty_uuuid ? "%02X" : "%02x", ch);
-	nchar--;
+	if (--nchar)
+	  putchar(' ');
 	break;
       }
   }
@@ -415,11 +416,11 @@ int main(int argc, char *argv[])
       break;
     case 'g':			/* UUID/GUID */
       type = ty_uuid;
-      nchar = 16;
+      nchar = 1;
       break;
     case 'G':			/* UUID/GUID */
       type = ty_uuuid;
-      nchar = 16;
+      nchar = 1;
       break;
     case 's':		       /* Use /dev/random, not /dev/urandom */
       secure_source = 1;
