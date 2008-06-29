@@ -26,68 +26,68 @@ If
 is not given, it defaults to 8 characters unless specified below.
 .SS OPTIONS
 .TP
-.I "\-\-ascii"
+.BR "\-\-ascii"
 Allow any printable ASCII character except space.  This is the default.
 .TP
-.I "\-a", "\-\-alphanum"
+.BR "\-a" , "\-\-alphanum"
 Generate mixed-case alphanumeric passwords.
 .TP
-.I "\-l", "\-\-alphanum \-\-lower"
+.BR "\-l" , "\-\-alphanum \-\-lower"
 Generate lower-case alphanumeric passwords.
 .TP
-.I "\-u", "\-\-alphanum \-\-upper"
+.BR "\-u" , "\-\-alphanum \-\-upper"
 Generate upper-case alphanumberic passwords.
 .TP
-.I "\-A", "\-\-alpha"
+.BR "\-A", "\-\-alpha"
 Generate mixed-case alphabetic passwords.
 .TP
-.I "\-L", "\-\-alpha \-\-lower"
+.BR "\-L" , "\-\-alpha \-\-lower"
 Generate lower-case alphabetic passwords.
 .TP
-.I "\-U", "\-\-alpha \-\-upper"
+.BR "\-U" , "\-\-alpha \-\-upper"
 Generate upper-case alphabetic passwords.
 .TP
-.I "\-x", "\-\-hexadecimal \-\-lower"
+.BR "\-x" , "\-\-hexadecimal \-\-lower"
 Generate lower-case hexadecimal numbers.
 .TP
-.I "\-X", "\-\-hexadecimal \-\-upper"
+.BR "\-X" , "\-\-hexadecimal \-\-upper"
 Generate upper-case hexadecimal numbers.
 .TP
-.I "\-d", "\-\-decimal"
+.BR "\-d" , "\-\-decimal"
 Generate decimal numbers.
 .TP
-.I "\-o", "\-\-octal"
+.BR "\-o" , "\-\-octal"
 Generate octal numbers.
 .TP
-.I "\-b", "\-\-binary"
+.BR "\-b" , "\-\-binary"
 Generate a bit string (for Bynar sabotage teams.)
 .TP
-.I "\-i", "\-\-ip"
+.BR "\-i" , "\-\-ip"
 Generate a random IP suffix (normally used with a
 .I 169.254.
 prefix).  The first octet cannot be 0 or 255.  Length is given in
 octets; the default is two octets.
 .TP
-.I "\-m", "\-\-mac-address"
+.BR "\-m" , "\-\-mac-address"
 Generate a random MAC address.  The first octet must have the
 multicast bit clear, and the local bit set.  Length is given in
 octets; the default is six octets.
 .TP
-.I "\-M", "\-\-mac-address \-\-upper"
+.BR "\-M" , "\-\-mac-address \-\-upper"
 Generate an upper case random MAC address.  The first octet must have the
 multicast bit clear, and the local bit set.  Length is given in
 octets; the default is six octets.
 .TP
-.I "\-g", "\-\-uuid", "\-\-guid"
+.BR "\-g" , "\-\-uuid" , "\-\-guid"
 Generate a random Universally Unique Identifier (UUID).  Length is
 given in the number of UUIDs to output; the default is one UUID.
 .TP
-.I "\-g", "\-\-uuid \-\-upper", "\-\-guid \-\-upper"
+.BR "\-g" , "\-\-uuid \-\-upper" , "\-\-guid \-\-upper"
 Generate an upper case random Universally Unique Identifier (UUID).
 Length is given in the number of UUIDs to output; the default is one
 UUID.
 .TP
-.I "\-s", "\-\-secure"
+.BR "\-s" , "\-\-secure"
 On systems which have
 .I /dev/random
 support, use
@@ -102,7 +102,7 @@ on a system without
 .I /dev/random
 support results in an error message.
 .TP
-.I "\-c", "\-\-c"
+.BR "\-c" , "\-\-c"
 For octal numbers, preceed with
 .I 0;
 for hexadecimal numbers, preceed with
