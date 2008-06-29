@@ -412,6 +412,10 @@ int main(int argc, char *argv[])
       type = ty_uuid;
       nchar = 16;
       break;
+    case 'G':			/* UUID/GUID */
+      type = ty_uuuid;
+      nchar = 16;
+      break;
     case 's':		       /* Use /dev/random, not /dev/urandom */
       secure_source = 1;
       break;
