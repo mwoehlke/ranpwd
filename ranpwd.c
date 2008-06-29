@@ -325,6 +325,7 @@ static void output_random(enum output_type type, int nchar, int decor)
 	getrandom(&ch, 1);
 	switch (ichar-nchar) {
 	case 4:
+	case 10:
 	  putchar('-');
 	  break;
 	case 6:
