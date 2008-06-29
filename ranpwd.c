@@ -323,7 +323,11 @@ static void output_random(enum output_type type, int nchar, int decor)
       case ty_uuid:
       case ty_uuuid:
 	getrandom(&ch, 1);
-	switch (ichar-nchar) {
+	switch ((ichar-nchar) & 15) {
+	case 0:
+	  if (ichar != nchar)
+	    putchar(' ');
+	  break;
 	case 4:
 	case 10:
 	  putchar('-');
