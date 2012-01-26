@@ -71,12 +71,14 @@ octets; the default is two octets.
 \fB\-m\fR, \fB\-\-mac-address\fR
 Generate a random MAC address.  The first octet must have the
 multicast bit clear, and the local bit set.  Length is given in
-octets; the default is six octets.
+octets; the default is six octets (MAC-48.)  Specify a length of 8 to
+generate an EUI-64.
 .TP
 \fB\-M\fR, \fB\-\-mac-address \-\-upper\fR
-Generate an upper case random MAC address.  The first octet must have the
-multicast bit clear, and the local bit set.  Length is given in
-octets; the default is six octets.
+Generate an upper case random MAC address.  The first octet must have
+the multicast bit clear, and the local bit set.  Length is given in
+octets; the default is six octets (MAC-48.)  Specify a length of 8 to
+generate an EUI-64.
 .TP
 \fB\-g\fR, \fB\-\-uuid\fR, \fB\-\-guid\fR
 Generate a random Universally Unique Identifier (UUID).  Length is
