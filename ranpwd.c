@@ -91,7 +91,7 @@ static void usage(int err)
 	  LO("  --binary             ")"  -b  Binary number\n"
 	  LO("  --c                  ")"  -c  C language constant\n"
 	  LO("  --mac-address        ")"  -m  Ethernet MAC address\n"
-	  LO("  --mac-address --upper")"  -M  Upper case ethernet MAC address\n"
+	  LO("  --mac-address --upper")"  -M  Upper case Ethernet MAC address\n"
 	  LO("  --uuid               ")"  -g  UUID/GUID\n"
 	  LO("  --uuid --upper       ")"  -G  Upper case UUID/GUID\n"
 	  LO("  --secure             ")"  -s  Slower but more secure\n"
