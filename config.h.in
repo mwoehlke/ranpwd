@@ -1,0 +1,5 @@
+#cmakedefine HAVE_GETOPT_H 1
+#cmakedefine HAVE_GETOPT_LONG 1
+
+#define PACKAGE_NAME "@PROJECT_NAME@"
+#define PACKAGE_VERSION "@PROJECT_VERSION@"
